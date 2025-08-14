@@ -1,0 +1,89 @@
+/* === [Form Base Styles] ===================================== */
+form {
+  color: #ffffff;
+}
+
+form label,
+form h1,
+form h3,
+form p {
+  color: #ffffff;
+}
+
+form small {
+  color: #c1c2c4ad;
+}
+
+form input {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid #ccc;
+}
+
+form input::placeholder {
+  color: #dddddd;
+}
+
+/* === [Custom Input] ========================================= */
+.custom-input {
+  background-color: rgba(24, 26, 28, 0.1) !important;
+  color: #ffffff !important;
+  padding-left: 15px;
+  backdrop-filter: blur(4px);
+  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+.custom-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* === [Link Styles] ========================================== */
+.link-no-underline {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.link-no-underline:hover {
+  color: #f0f0f0;
+  text-decoration: underline;
+}
+
+/* === [Button: Login] ======================================== */
+.btn-login {
+  background-color: #3D4142;
+  border: 1px solid #E7E3FC3B;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #757575;
+  border-color: #3D4142;
+}
+
+/* === [Button: Google] ======================================= */
+.btn-google {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #C1C2C4;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-google:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* === [Helper Links] ========================================= */
+.helper-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}

@@ -1,0 +1,218 @@
+/* === [Carousel Item Wrapper] ================================ */
+.carousel-item {
+  position: relative;
+  height: 600px;
+  background: #000;
+  color: #fff;
+}
+
+.carousel-item video,
+.carousel-poster,
+.carousel-video {
+  object-fit: cover;
+  height: 100%;
+  filter: brightness(60%);
+}
+
+.carousel-item video {
+  width: 100%;
+  min-height: 400px;
+}
+
+.carousel-item video:not([poster]) {
+  filter: brightness(60%);
+}
+
+.carousel-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.carousel-video {
+  position: relative;
+  z-index: 2;
+}
+
+/* === [Mute Button] ========================================== */
+.carousel-mute-button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-mute-button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* === [Loader Spinner] ======================================= */
+.carousel-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 20;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === [Caption & Konten] ===================================== */
+.carousel-caption {
+  position: absolute;
+  bottom: 5%;
+  left: 6%;
+  max-width: 600px;
+  text-align: left;
+}
+
+.carousel-caption h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-caption p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.carousel-caption .badge {
+  font-size: 0.75rem;
+  margin: 0 0.3rem 0.3rem 0;
+}
+
+.carousel-caption .btn {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  padding: 0.4rem 1rem;
+}
+
+/* === [Custom Buttons] ======================================= */
+.btn-custom,
+.btn-custom-more {
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+  color: #fff;
+}
+
+.btn-custom {
+  background-color: #024DB7;
+}
+
+.btn-custom:hover {
+  background-color: #0586FF;
+}
+
+.btn-custom-more {
+  background-color: #616161;
+}
+
+.btn-custom-more:hover {
+  background-color: #9E9E9E;
+}
+
+/* === [Badge 18+] ============================================ */
+.badge-18plus {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #C1C2C4;
+  border: 1px solid #C1C2C4;
+  font-size: 0.75rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* === [Carousel Controls] ==================================== */
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+/* === [Background Overlay] =================================== */
+.carousel-inner-custom {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+}
+
+/* === [Responsive Styles] ==================================== */
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 320px;
+  }
+
+  .carousel-caption {
+    left: 5%;
+    right: 5%;
+    text-align: center;
+  }
+
+  .carousel-caption h2 {
+    font-size: 1.4rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-item {
+    height: 280px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 1.2rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.75rem;
+  }
+
+  .carousel-caption .btn {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.9rem;
+  }
+}

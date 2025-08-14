@@ -1,0 +1,85 @@
+/* === [Animation Keyframes] ================================== */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === [Arrow Navigation] ===================================== */
+.arrow-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #343a40;
+  color: white;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.arrow:hover {
+  background-color: #495057;
+}
+
+.btn-left,
+.btn-right {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-left {
+  left: 13px;
+}
+
+.btn-right {
+  left: -13px;
+}
+
+/* === [Slider Title] ========================================= */
+.slider-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* === [Scroll Container] ===================================== */
+.scroll-container {
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* === [Movie Card Hover] ===================================== */
+.movie-card-wrapper {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.movie-card-wrapper:hover {
+  transform: scale(1.05);
+}
+
+/* === [Responsive Styles] ==================================== */
+@media (max-width: 576px) {
+  .slider-title {
+    font-size: 1.2rem;
+    padding: 0.75rem;
+  }
+
+  .arrow {
+    font-size: 1.2rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

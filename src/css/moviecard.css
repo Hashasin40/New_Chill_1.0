@@ -1,0 +1,123 @@
+/* === [Poster Image] ========================================= */
+.poster-img,
+.portrait-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.landscape-img {
+  height: 120px;
+}
+
+/* === [Wrapper] ============================================== */
+.poster-wrapper,
+.wrapper-portrait,
+.wrapper-landscape {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.wrapper-portrait {
+  height: 220px;
+}
+
+.wrapper-landscape {
+  height: 120px;
+}
+
+/* === [Title Overlay] ======================================== */
+.title-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+
+.title-overlay h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.title-overlay span {
+  font-size: 0.8rem;
+}
+
+/* === [Typography] =========================================== */
+.fs {
+  font-size: 0.675rem;
+  color: #adb5bd;
+}
+
+.movie-title {
+  font-size: 0.85rem;
+}
+
+/* === [Badges] =============================================== */
+.new-release-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #0F1E93;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.top10-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgb(255, 0, 0);
+  color: black;
+  font-weight: bold;
+  font-size: 0.875rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 2;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* === [Animations] =========================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === [Responsive Styles] ==================================== */
+@media (max-width: 576px) {
+  .poster-img {
+    height: auto;
+  }
+
+  .landscape-img {
+    height: 100px;
+  }
+
+  .portrait-img {
+    height: 180px;
+  }
+
+  .title-overlay h5 {
+    font-size: 0.9rem;
+  }
+
+  .title-overlay span {
+    font-size: 0.8rem;
+  }
+}

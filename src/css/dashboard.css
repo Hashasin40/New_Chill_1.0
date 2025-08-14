@@ -1,0 +1,110 @@
+/* === [Typography] =========================================== */
+footer h5,
+footer h6 {
+  font-weight: bold;
+}
+
+.form-small {
+  color: #c1c2c4ad;
+}
+
+/* === [Footer Links] ========================================= */
+.footer-link-list {
+  padding: 0;
+  margin: 0;
+}
+
+.footer-link-list li {
+  cursor: pointer;
+  font-size: small;
+}
+
+.footer-link-list li a {
+  color: #c1c2c4ad;
+  transition: color 0.3s ease;
+}
+
+.footer-link-list li a:hover {
+  color: white;
+}
+
+/* === [Genre List] =========================================== */
+.genre-list {
+  gap: 0.1rem 0.9rem;
+  padding: 0;
+  margin: 0;
+}
+
+.genre-item {
+  width: 30%;
+  margin-bottom: 2px;
+}
+
+/* === [Dropdown Menu] ======================================== */
+.dropdown-menu {
+  background: #181A1C;
+  z-index: 1050;
+  position: absolute;
+}
+
+.dropdown-item {
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  color: #3254FF;
+}
+
+.dropdown {
+  overflow: visible;
+}
+
+/* === [Custom Background] ==================================== */
+.bg-custom {
+  background-color: #181A1C;
+}
+
+/* === [Responsive: Mobile ≤576px] ============================ */
+@media (max-width: 576px) {
+  .navbar-nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap !important;
+  }
+
+  .navbar-nav .nav-item {
+    margin-right: 1rem;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 0.75rem;
+    padding: 0 0.25rem;
+  }
+
+  .navbar-brand i {
+    font-size: 20px;
+  }
+
+  .dropdown-item {
+    font-size: 0.75rem;
+  }
+}
+
+/* === [Responsive: Tablet ≤768px] ============================ */
+@media (max-width: 768px) {
+  .footer-mobile-item {
+    background: transparent;
+    border: none;
+    color: #c1c2c4ad;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .footer-mobile-item:hover {
+    color: white;
+  }
+}
