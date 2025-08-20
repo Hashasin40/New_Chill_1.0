@@ -46,7 +46,7 @@ function DashboardLayout() {
                         <Link className="nav-link p-0 text-white" to="#">Film</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link p-0 text-white" to="#">Daftar Saya</Link>
+                        <Link className="nav-link p-0 text-white" to="/dashboard/daftarsaya">Daftar Saya</Link>
                     </li>
                 </ul>
 

@@ -4,6 +4,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import DashboardLayout from './pages/dashboard/DashboardLayout';
 import DashboardHome from './pages/dashboard/DashboardHome';
+import DaftarSaya from './pages/dashboard/DaftarSaya';
 import Profile from './pages/dashboard/Profile';
 import Settings from './pages/dashboard/Settings';
 import RequireAuth from './component/RequireAuth';
@@ -22,6 +23,7 @@ function App() {
         }
       >
         <Route index element={<DashboardHome />} />
+        <Route path="daftarsaya" element={<DaftarSaya />} />
         <Route path="profile" element={<Profile />} />
         <Route path="settings" element={<Settings />} />
       </Route>
