@@ -1,89 +1,111 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Button, Form } from "react-bootstrap";
 import toast from "react-hot-toast";
-import useAuth from "../../../store/auth";
+
+import IconProfile from "../../../assets/icon profile2.png";
+import { useUserProfile } from "../data/useUserProfile";
+
+import "../../../css/profilesection.css";
 
 const ProfileSection = () => {
-  const user = useAuth((state) => state.user);
-  const setUser = useAuth((state) => state.setUser);
+  const {
+    username,
+    setUsername,
+    email,
+    password,
+    setPassword,
+    avatarLocal,
+    setAvatarLocal,
+    updateUser,
+  } = useUserProfile();
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // Ganti foto avatar
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  // Sync dengan store saat komponen mount
-  useEffect(() => {
-    if (user) {
-      setUsername(user.name || "");
-      setEmail(user.email || "");
-    }
-  }, [user]);
+    const reader = new FileReader();
+    reader.onloadend = () => setAvatarLocal(reader.result);
+    reader.readAsDataURL(file);
+  };
 
+  // Simpan profil
   const handleSave = () => {
     if (!username || !email) {
       toast.error("Username dan email wajib diisi");
       return;
     }
 
-    const updatedUser = {
-      ...user,
-      name: username,
-      email,
-      ...(password && { password }),
-    };
-
-    setUser(updatedUser);
+    updateUser(); // updateUser akan simpan sebagai 'name'
     toast.success("Profil berhasil disimpan");
   };
 
   return (
-    <div className="profile-section bg-dark text-white p-4 rounded">
-      <h4 className="mb-3">👤 Profil Saya</h4>
+    <div className="profile-section text-white p-4 rounded">
+      {/* Title */}
+      <h4 className="mb-3">Profil Saya</h4>
 
+      {/* Avatar */}
       <div className="d-flex align-items-center gap-3 mb-3">
         <img
-          src={user?.avatar || "/default-avatar.png"}
+          src={avatarLocal || IconProfile}
           alt="Avatar"
-          className="rounded-circle"
-          style={{ width: "64px", height: "64px", objectFit: "cover" }}
+          className="rounded-circle border avatar-image"
         />
-        <Button variant="secondary" size="sm">Ganti Foto</Button>
+
+        <Form.Group controlId="formFile" className="mb-0">
+          <Form.Label className="btn btn-outline-primary rounded-pill px-4 py-2">
+            Ganti Foto
+            <Form.Control
+              type="file"
+              accept="image/*"
+              onChange={handleAvatarChange}
+              className="d-none"
+            />
+          </Form.Label>
+        </Form.Group>
       </div>
 
-      <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
+      {/* Form */}
+      <Form className="form-wrapper">
+        {/* Username */}
+        <div className="input-card">
+          <label className="input-label">Username</label>
+          <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className="input-inside"
             placeholder="Nama pengguna"
           />
-        </Form.Group>
+        </div>
 
-        <Form.Group className="mb-3">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
+        {/* Email */}
+        <div className="input-card">
+          <label className="input-label">Email</label>
+          <input
             type="email"
             value={email}
             readOnly
-            placeholder="Email aktif"
-            className="bg-secondary bg-opacity-25 text-light"
+            className="input-inside input-disabled"
           />
-        </Form.Group>
+        </div>
 
-        <Form.Group className="mb-3">
-          <Form.Label>Password Baru</Form.Label>
-          <Form.Control
+        {/* Password */}
+        <div className="input-card">
+          <label className="input-label">Password</label>
+          <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="input-inside"
             placeholder="Kosongkan jika tidak ingin mengubah"
           />
-        </Form.Group>
+        </div>
 
+        {/* Save Button */}
         <Button variant="primary" onClick={handleSave}>
-          💾 Simpan
+          Simpan
         </Button>
       </Form>
     </div>

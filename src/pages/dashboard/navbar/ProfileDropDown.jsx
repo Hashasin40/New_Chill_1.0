@@ -1,15 +1,14 @@
-import { Link } from "react-router-dom";
-import IconProfile from "../../../assets/icon profile2.png";
-import useAuth from "../../../store/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../../store/auth';
 
-const ProfileDropDown = () => {
+function ProfileDropdown() {
   const logout = useAuth((state) => state.logout);
+  const avatar = useAuth((state) => state.avatar);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate('/');
   };
 
   return (
@@ -21,7 +20,7 @@ const ProfileDropDown = () => {
         aria-expanded="false"
       >
         <img
-          src={IconProfile}
+          src={avatar}
           alt="Profile"
           className="rounded-circle"
           width="30"
@@ -36,6 +35,6 @@ const ProfileDropDown = () => {
       </ul>
     </div>
   );
-};
+}
 
-export default ProfileDropDown;
+export default ProfileDropdown;
