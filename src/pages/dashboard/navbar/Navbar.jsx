@@ -12,7 +12,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-dark bg-dark px-3 py-2">
+    <nav className="navbar navbar-dark bg-dark px-3 py-2 sticky-top">
       <NavbarIcon />
       <NavbarLinks />
       <div className="d-flex align-items-center ms-auto">

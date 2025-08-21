@@ -1,0 +1,9 @@
+.btn-left,
+.btn-right {
+  transition: background-color 0.3s ease;
+}
+
+.btn-left:hover,
+.btn-right:hover {
+  background-color: #333;
+}

@@ -1,0 +1,33 @@
+.profile-page {
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+/* Desktop: side by side */
+@media (min-width: 768px) {
+  .profile-header {
+    flex-direction: row;
+  }
+
+  .profile-header > * {
+    flex: 1;
+  }
+}
+
+/* Mobile: stack vertically, SubscriptionNotice di atas */
+@media (max-width: 767px) {
+  .profile-header {
+    flex-direction: column-reverse;
+  }
+
+  .profile-header > * {
+    width: 100%;
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/moviecard.css"; // pastikan path sesuai
+import "../css/moviecard.css";
 import { Button } from "react-bootstrap";
-import toast from "react-hot-toast"; // ✅ Tambahkan ini
+import toast from "react-hot-toast";
 
 const MyListCard = ({ movie, onRemove }) => {
   const handleRemove = () => {
@@ -11,14 +11,12 @@ const MyListCard = ({ movie, onRemove }) => {
 
   return (
     <div className="poster-wrapper wrapper-portrait position-relative group">
-      {/* Poster */}
       <img
         src={movie.imagePortrait || "/default-portrait.png"}
         alt={movie.title}
         className="poster-img portrait-img"
       />
 
-      {/* Overlay Judul & Genre */}
       <div className="title-overlay position-absolute bottom-0 w-100 text-white p-2">
         <h5 className="mb-0">{movie.title}</h5>
         <span className="fs">
@@ -28,8 +26,7 @@ const MyListCard = ({ movie, onRemove }) => {
         </span>
       </div>
 
-      {/* Tombol Hapus saat Hover */}
-      <div className="hover-buttons">
+      <div className="hover-buttons position-absolute bottom-0 start-0 w-100 text-center">
         <Button variant="danger" size="sm" onClick={handleRemove}>
           − Hapus dari Daftar Saya
         </Button>

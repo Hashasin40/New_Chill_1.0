@@ -1,0 +1,55 @@
+/* Wrapper untuk poster portrait */
+.wrapper-portrait {
+  width: 150px;
+  aspect-ratio: 2 / 3;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+}
+
+/* Gambar poster */
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover zoom */
+.wrapper-portrait:hover .portrait-img {
+  transform: scale(1.05);
+}
+
+/* Overlay judul & genre */
+.title-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  font-size: 0.85rem;
+}
+
+/* Tombol hapus muncul saat hover */
+.hover-buttons {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.wrapper-portrait:hover .hover-buttons {
+  opacity: 1;
+}
+
+/* Scrollbar hidden */
+.scroll-bar {
+  scrollbar-width: none;
+}
+.scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive tweak */
+@media (max-width: 576px) {
+  .wrapper-portrait {
+    width: 120px;
+  }
+}
