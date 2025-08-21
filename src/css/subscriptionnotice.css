@@ -1,6 +1,6 @@
 .subscription-card {
-  background-color: #ffe082; /* mirip bg-warning */
-  color: #212529;
+  background-color: #3D4142;
+  color: #FFFFFF;
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -9,15 +9,21 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-top: 24px;
   max-width: 600px;
+  width: 100%;
+  flex-wrap: wrap; /* biar konten bisa turun kalau sempit */
 }
 
+/* Ikon megaphone */
 .card-icon {
-  font-size: 2rem;
-  margin-top: 4px;
+  width: 5rem;
+  height: auto;
+  flex-shrink: 0;
 }
 
+/* Konten teks dan tombol */
 .card-content {
   flex: 1;
+  min-width: 0;
 }
 
 .card-title {
@@ -30,16 +36,41 @@
 }
 
 .card-button {
-  background-color: #212529;
-  color: #ffe082;
+  background-color: #2F3334;
+  color: #FFFFFF;
   padding: 8px 16px;
   border-radius: 6px;
-  font-weight: bold;
   text-decoration: none;
   display: inline-block;
   transition: background-color 0.3s ease;
 }
 
 .card-button:hover {
-  background-color: #343a40;
+  background-color: #424242;
+}
+
+/* 📱 Responsif untuk layar kecil */
+@media (max-width: 576px) {
+  .subscription-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .card-icon {
+    width: 3rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.875rem;
+  }
+
+  .card-button {
+    font-size: 0.875rem;
+    padding: 6px 12px;
+    margin-top: 4px;
+  }
 }

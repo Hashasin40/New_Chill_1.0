@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import toast from "react-hot-toast";
-import useAuth from "../../../store/auth"; // pastikan path sesuai
+import useAuth from "../../../store/auth";
 
 const ProfileSection = () => {
   const user = useAuth((state) => state.user);
   const setUser = useAuth((state) => state.setUser);
 
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // Sync dengan store saat komponen mount
   useEffect(() => {
     if (user) {
-      setName(user.name || "");
+      setUsername(user.name || "");
       setEmail(user.email || "");
     }
   }, [user]);
 
   const handleSave = () => {
-    if (!name || !email) {
-      toast.error("Nama dan email wajib diisi");
+    if (!username || !email) {
+      toast.error("Username dan email wajib diisi");
       return;
     }
 
     const updatedUser = {
       ...user,
-      name,
+      name: username,
       email,
       ...(password && { password }),
     };
@@ -52,12 +52,12 @@ const ProfileSection = () => {
 
       <Form>
         <Form.Group className="mb-3">
-          <Form.Label>Nama</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Nama lengkap"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Nama pengguna"
           />
         </Form.Group>
 
@@ -66,8 +66,9 @@ const ProfileSection = () => {
           <Form.Control
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            readOnly
             placeholder="Email aktif"
+            className="bg-secondary bg-opacity-25 text-light"
           />
         </Form.Group>
 
