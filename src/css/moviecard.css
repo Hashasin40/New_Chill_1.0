@@ -2,7 +2,7 @@
 .poster-img,
 .portrait-img {
   width: 100%;
-  height: 220px;
+  height: 100%;
   object-fit: cover;
   border-radius: 0.75rem;
   transition: transform 0.3s ease-in-out;
@@ -30,7 +30,10 @@
 }
 
 .wrapper-portrait {
-  height: 220px;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .wrapper-landscape {
@@ -39,6 +42,8 @@
 
 /* === [Title Overlay] ======================================== */
 .title-overlay {
+  padding: 0.5rem;
+  padding-bottom: 2rem;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
 }
 
@@ -93,11 +98,13 @@
 .hover-buttons {
   display: none;
   position: absolute;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
   text-align: center;
   z-index: 3;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
   transition: opacity 0.3s ease;
 }
 
@@ -106,7 +113,6 @@
   opacity: 1;
 }
 
-/* Tombol styling */
 .hover-buttons .btn {
   font-size: 0.75rem;
   padding: 4px 8px;
@@ -119,24 +125,13 @@
   transform: scale(1.05);
 }
 
-.poster-wrapper {
-  position: relative;
+/* === [Grid Layout] ========================================== */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
 }
-
-.hover-buttons {
-  display: none;
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
-  text-align: center;
-  z-index: 3;
-}
-
-.poster-wrapper:hover .hover-buttons {
-  display: block;
-}
-
 
 /* === [Animations] =========================================== */
 @keyframes fadeIn {
@@ -159,16 +154,14 @@
 
 /* === [Responsive Styles] ==================================== */
 @media (max-width: 576px) {
-  .poster-img {
-    height: auto;
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
   }
 
   .landscape-img {
     height: 100px;
-  }
-
-  .portrait-img {
-    height: 180px;
   }
 
   .title-overlay h5 {
@@ -177,6 +170,10 @@
 
   .title-overlay span {
     font-size: 0.8rem;
+  }
+
+  .hover-buttons {
+    padding: 6px;
   }
 
   .hover-buttons .btn {
