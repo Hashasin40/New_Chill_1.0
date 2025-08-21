@@ -2,6 +2,7 @@ const posters = [
   {
     poster: "/poster/film1.png",
     landscape: "/banner/film1.png",
+    id: "the-little-mermaid",
     title: "The Little Mermaid",
     episode: "16 Episode",
     genre: ["Misteri", "Kriminal", "Fantasi"],
@@ -10,6 +11,7 @@ const posters = [
   {
     poster: "/poster/film2.png",
     landscape: "/banner/film2.png",
+    id: "dilan-1991",
     title: "Dilan 1991",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -18,6 +20,7 @@ const posters = [
   {
     poster: "/poster/film3.png",
     landscape: "/banner/film3.png",
+    id: "missing",
     title: "Missing",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -26,6 +29,7 @@ const posters = [
     {
     poster: "/poster/film4.png",
     landscape: "/banner/film4.png",
+    id: "avatar-the-way-of-water ",
     title: "Avatar: The Way of Water",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -34,6 +38,7 @@ const posters = [
     {
     poster: "/poster/film5.png",
     landscape: "/banner/film5.png",
+    id: "the-tomorrow-war",
     title: "The Tomorrow War",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -42,6 +47,7 @@ const posters = [
     {
     poster: "/poster/film6.png",
     landscape: "/banner/film6.png",
+    id: "bluelock",
     title: "Bluelock",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -50,6 +56,7 @@ const posters = [
     {
     poster: "/poster/film7.png",
     landscape: "/banner/film7.png",
+    id: "stuart-little",
     title: "Stuart Little",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -58,6 +65,7 @@ const posters = [
     {
     poster: "/poster/film8.png",
     landscape: "/banner/film8.png",
+    id: "black-adam",
     title: "Black Adam",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -66,6 +74,7 @@ const posters = [
     {
     poster: "/poster/film9.png",
     landscape: "/banner/film9.png",
+    id: "shazam-fury-of-the-gods",
     title: "Shazamm! Fury of the Gods",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -74,6 +83,7 @@ const posters = [
     {
     poster: "/poster/film10.png",
     landscape: "/banner/film10.png",
+    id: "doctor-strange-in-the-multiverse-of-madness",
     title: "Doctor Strange in the Multiverse of Madness",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -82,6 +92,7 @@ const posters = [
     {
     poster: "/poster/film11.png",
     landscape: "/banner/film11.png",
+    id: "big-hero-6",
     title: "Big Hero 6",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -90,6 +101,7 @@ const posters = [
     {
     poster: "/poster/film12.png",
     landscape: "/banner/film12.png",
+    id: "guardians-of-the-galaxy-vol-3",
     title: "Guardians of the Galaxy Vol. 3",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -98,6 +110,7 @@ const posters = [
     {
     poster: "/poster/film13.png",
     landscape: "/banner/film13.png",
+    id: "suzume-no-tojimari",
     title: "Suzume no Tojimari",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -106,6 +119,7 @@ const posters = [
     {
     poster: "/poster/film14.png",
     landscape: "/banner/film14.png",
+    id: "fast-x",
     title: "Fast X",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -114,6 +128,7 @@ const posters = [
     {
     poster: "/poster/film15.png",
     landscape: "/banner/film15.png",
+    id: "happiness",
     title: "Happiness",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -122,6 +137,7 @@ const posters = [
   {
     poster: "/poster/film16.png",
     landscape: "/banner/film16.png",
+    id: "a-man-called-otto",
     title: "A Man Called Otto",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -130,6 +146,7 @@ const posters = [
   {
     poster: "/poster/film17.png",
     landscape: "/banner/film17.png",
+    id: "don-t-look-up",
     title: "Don't Look Up",
     episode: "1h 50m",
     genre: ["Romance", "Drama"],
@@ -138,6 +155,7 @@ const posters = [
   {
     poster: "/poster/film18.png",
     landscape: "/banner/film18.png",
+    id: "alice-in-borderland",
     title: "Alice in Borderland",
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],
@@ -146,6 +164,7 @@ const posters = [
   {
     poster: "/poster/film19.png",
     landscape: "/banner/film19.png",    
+    id: "my-hero-academia",
     title: "My Hero Academia",
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],
@@ -154,6 +173,7 @@ const posters = [
   {
     poster: "/poster/film20.png",
     landscape: "/banner/film20.png",    
+    id: "sonic-2-the-hedgehog",
     title: "Sonic 2 The Hedgehog",
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],
@@ -162,6 +182,7 @@ const posters = [
   {
     poster: "/poster/film21.png",
     landscape: "/banner/film21.png",    
+    id: "baymax",
     title: "Baymax",
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],
@@ -170,6 +191,7 @@ const posters = [
   {
     poster: "/poster/film22.png",
     landscape: "/banner/film22.png",    
+    id: "rio",
     title: "Rio",
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],
@@ -178,6 +200,7 @@ const posters = [
   {
     poster: "/poster/film23.png",
     landscape: "/banner/film23.png",    
+    id: "ant-man-and-the-wasp-quantumania",
     title: "Ant Man and the Wasp: Quantumania",    
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],
@@ -186,6 +209,7 @@ const posters = [
   {
     poster: "/poster/film24.png",
     landscape: "/banner/film24.png",    
+    id: "all-of-us-are-dead",
     title: "All Of Us Are Dead",    
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],
@@ -194,6 +218,7 @@ const posters = [
   {
     poster: "/poster/film25.png",
     landscape: "/banner/film25.png",    
+    id: "spider-man-across-the-spider-verse",
     title: "Spider-Man: Across the Spider-Verse",    
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],
@@ -202,6 +227,7 @@ const posters = [
   {
     poster: "/poster/film26.png",
     landscape: "/banner/film26.png",    
+    id: "ted-lasso",
     title: "Ted Lasso",    
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],
@@ -210,6 +236,7 @@ const posters = [
   {
     poster: "/poster/film27.png",
     landscape: "/banner/film27.png",    
+    id: "duty-after-school",
     title: "Duty After School",    
     episode: "1h 50m",    
     genre: ["Romance", "Drama"],

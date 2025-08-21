@@ -1,4 +1,3 @@
-// src/store/useDaftarSayaStore.js
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -7,18 +6,18 @@ const useDaftarSayaStore = create(
     (set, get) => ({
       daftar: [],
       addToDaftar: (movie) => {
-        const exists = get().daftar.some((m) => m.title === movie.title);
+        const exists = get().daftar.some((m) => m.id === movie.id);
         if (!exists) {
           set({ daftar: [...get().daftar, movie] });
         }
       },
-      removeFromDaftar: (title) => {
-        set({ daftar: get().daftar.filter((m) => m.title !== title) });
+      removeFromDaftar: (id) => {
+        set({ daftar: get().daftar.filter((m) => m.id !== id) });
       },
       clearDaftar: () => set({ daftar: [] }),
     }),
     {
-      name: "daftar-saya", // key di localStorage
+      name: "daftar-saya",
     }
   )
 );

@@ -119,6 +119,25 @@
   transform: scale(1.05);
 }
 
+.poster-wrapper {
+  position: relative;
+}
+
+.hover-buttons {
+  display: none;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  text-align: center;
+  z-index: 3;
+}
+
+.poster-wrapper:hover .hover-buttons {
+  display: block;
+}
+
+
 /* === [Animations] =========================================== */
 @keyframes fadeIn {
   from {

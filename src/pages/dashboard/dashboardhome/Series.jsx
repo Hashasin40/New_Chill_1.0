@@ -6,24 +6,21 @@ import useDaftarSayaStore from "../data/useDaftarSayaStore";
 import "../../../css/series.css";
 
 function Series() {
-  const { addToDaftar, daftar } = useDaftarSayaStore();
+  const { addToDaftar } = useDaftarSayaStore();
 
-  // Helper untuk mapping film dan inject status daftar
+  // ✅ Mapping film dengan ID dan properti yang dibutuhkan MovieCard
   const mapFilm = (items, extra = () => ({})) =>
-    items.map((item, index) => {
-      const isInDaftar = daftar.some((m) => m.title === item.title);
-      return {
-        title: item.title,
-        genre: item.genre.join(", "),
-        imagePortrait: item.poster,
-        imageLandscape: item.landscape,
-        rating: item.rating,
-        isInDaftar,
-        ...extra(index, item), // ✅ aman karena defaultnya fungsi
-      };
-    });
+    items.map((item, index) => ({
+      id: item.id,
+      title: item.title,
+      genre: item.genre.join(", "),
+      imagePortrait: item.poster,
+      imageLandscape: item.landscape,
+      rating: item.rating,
+      ...extra(index, item),
+    }));
 
-
+  // 🎬 Kategori film
   const MelanjutkanTontonanFilm = posters.slice(0, 10);
   const TopRatingFilmdanSeriesHariIni = posters.slice(10, 20);
   const FilmTrending = posters.slice(0, 10);
@@ -36,11 +33,7 @@ function Series() {
         title="Melanjutkan Tontonan Film"
         movies={mapFilm(MelanjutkanTontonanFilm)}
         renderItem={(movie) => (
-          <MovieCard
-            movie={movie}
-            type="landscape"
-            onAddToList={addToDaftar}
-          />
+          <MovieCard movie={movie} type="landscape" onAddToList={addToDaftar} />
         )}
         cardWidth={240}
       />
@@ -50,11 +43,7 @@ function Series() {
         title="Top Rating Film dan Series Hari ini"
         movies={mapFilm(TopRatingFilmdanSeriesHariIni)}
         renderItem={(movie) => (
-          <MovieCard
-            movie={movie}
-            type="portrait"
-            onAddToList={addToDaftar}
-          />
+          <MovieCard movie={movie} type="portrait" onAddToList={addToDaftar} />
         )}
         cardWidth={150}
       />
@@ -67,11 +56,7 @@ function Series() {
           topRank: index + 1,
         }))}
         renderItem={(movie) => (
-          <MovieCard
-            movie={movie}
-            type="portrait"
-            onAddToList={addToDaftar}
-          />
+          <MovieCard movie={movie} type="portrait" onAddToList={addToDaftar} />
         )}
         cardWidth={150}
       />
@@ -83,11 +68,7 @@ function Series() {
           isNewRelease: true,
         }))}
         renderItem={(movie) => (
-          <MovieCard
-            movie={movie}
-            type="portrait"
-            onAddToList={addToDaftar}
-          />
+          <MovieCard movie={movie} type="portrait" onAddToList={addToDaftar} />
         )}
         cardWidth={150}
       />
