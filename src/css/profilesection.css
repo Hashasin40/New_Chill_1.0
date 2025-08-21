@@ -17,16 +17,16 @@
   gap: 6px;
   width: 642px;
   padding: 10px 12px;
-  border: 1px solid #ced4da;
+  border: 1px solid #E7E3FC3B;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: #22282A;
 }
 
 /* Label tetap di atas */
 .input-label {
   font-weight: 600;
   font-size: 14px;
-  color: #212529;
+  color: #9D9EA1;
 }
 
 /* Input transparan, tanpa border */
@@ -37,7 +37,7 @@
   font-size: 14px;
   background-color: transparent;
   border: none;
-  color: #212529;
+  color: #fff;
 }
 
 .input-inside:focus {
@@ -60,4 +60,68 @@
   color: #9D9EA1;
   font-size: 14px;
   cursor: pointer;
+}
+
+.button-custom {
+  background-color: #09147A;
+  color: #fff;
+  border: none;
+}
+
+.button-custom:hover {
+  background-color: #0367DB;
+}
+.avatar-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.upload-note {
+  font-size: 13px;
+  color: #9D9EA1;
+  margin-top: 4px;
+  margin-left: 2px;
+}
+
+
+@media (max-width: 768px) {
+  .form-wrapper {
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  .input-card {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 10px;
+  }
+
+  .input-label {
+    font-size: 13px;
+  }
+
+  .input-inside {
+    font-size: 15px;
+    height: 36px;
+  }
+
+  .edit-icon {
+    right: 10px;
+    bottom: 8px;
+    font-size: 13px;
+  }
+
+  .btn-custom {
+    width: 100%;
+    font-size: 15px;
+    padding: 10px 0;
+  }
+
+  .avatar-image {
+    width: 64px;
+    height: 64px;
+  }
 }

@@ -25,7 +25,7 @@ const MyListSection = () => {
 
   return (
     <div className="mylist-section container-fluid pt-4">
-      <h4 className="mb-3 text-white">📺 Daftar Saya</h4>
+      <h4 className="mb-3 text-white">Daftar Saya</h4>
 
       {daftar.length === 0 ? (
         <p className="text-muted">Belum ada series yang ditambahkan.</p>

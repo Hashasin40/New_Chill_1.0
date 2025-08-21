@@ -68,29 +68,27 @@
 }
 
 /* === [Badges] =============================================== */
-.new-release-badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: #0F1E93;
-  color: #fff;
-  font-size: 0.75rem;
-  padding: 4px 8px;
-  border-radius: 4px;
-  z-index: 2;
-}
-
+.new-release-badge,
 .top10-badge {
   position: absolute;
   top: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  z-index: 2;
+}
+
+.new-release-badge {
+  left: 8px;
+  background-color: #0F1E93;
+  color: #fff;
+}
+
+.top10-badge {
   right: 8px;
   background-color: rgb(255, 0, 0);
   color: black;
   font-weight: bold;
-  font-size: 0.875rem;
-  padding: 4px 8px;
-  border-radius: 4px;
-  z-index: 2;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -145,13 +143,6 @@
   }
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* === [Responsive Styles] ==================================== */
 @media (max-width: 576px) {
   .movie-grid {
@@ -160,24 +151,54 @@
     padding: 0.5rem;
   }
 
+  .wrapper-portrait {
+    aspect-ratio: auto;
+    min-height: 220px;
+  }
+
+  .poster-img,
+  .portrait-img {
+    border-radius: 0.5rem;
+  }
+
   .landscape-img {
     height: 100px;
   }
 
+  .title-overlay {
+    padding: 0.5rem;
+    padding-bottom: 1.5rem;
+  }
+
   .title-overlay h5 {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .title-overlay span {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .hover-buttons {
     padding: 6px;
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .hover-buttons .btn {
     font-size: 0.7rem;
+    padding: 4px 6px;
+    width: 100%;
+    margin: 2px 0;
+  }
+
+  .new-release-badge,
+  .top10-badge {
+    font-size: 0.7rem;
     padding: 3px 6px;
+  }
+}
+
+@media (max-width: 360px) {
+  .movie-grid {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
