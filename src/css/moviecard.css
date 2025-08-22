@@ -33,7 +33,7 @@
   aspect-ratio: 2 / 3;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .wrapper-landscape {
@@ -42,14 +42,18 @@
 
 /* === [Title Overlay] ======================================== */
 .title-overlay {
+  position: absolute;
+  bottom: 48px;
   padding: 0.5rem;
-  padding-bottom: 2rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  z-index: 2;
+  min-height: 60px;
 }
 
 .title-overlay h5 {
   font-size: 1rem;
   font-weight: 600;
+  margin-bottom: 0.25rem;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
@@ -75,7 +79,7 @@
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.75rem;
-  z-index: 2;
+  z-index: 3;
 }
 
 .new-release-badge {
@@ -94,16 +98,16 @@
 
 /* === [Hover Buttons] ======================================== */
 .hover-buttons {
-  display: none;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 8px;
   text-align: center;
-  z-index: 3;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.5);
   transition: opacity 0.3s ease;
+  display: none;
 }
 
 .poster-wrapper:hover .hover-buttons {
@@ -152,12 +156,14 @@
   }
 
   .wrapper-portrait {
+    height: 240px;
     aspect-ratio: auto;
-    min-height: 220px;
+    border-radius: 0.5rem;
   }
 
-  .poster-img,
   .portrait-img {
+    height: 100%;
+    object-fit: cover;
     border-radius: 0.5rem;
   }
 
@@ -166,8 +172,9 @@
   }
 
   .title-overlay {
+    bottom: 48px;
     padding: 0.5rem;
-    padding-bottom: 1.5rem;
+    min-height: 50px;
   }
 
   .title-overlay h5 {
@@ -180,7 +187,6 @@
 
   .hover-buttons {
     padding: 6px;
-    background: rgba(0, 0, 0, 0.5);
   }
 
   .hover-buttons .btn {
@@ -198,30 +204,14 @@
 }
 
 @media (max-width: 345px) {
-  .movie-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.4rem;
-    padding: 0.4rem;
-  }
-
   .wrapper-portrait {
-    min-height: 200px;
-    border-radius: 0.5rem;
-  }
-
-  .poster-img,
-  .portrait-img {
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  }
-
-  .landscape-img {
-    height: 80px;
+    height: 220px;
   }
 
   .title-overlay {
+    bottom: 44px;
     padding: 0.4rem;
-    padding-bottom: 1rem;
+    min-height: 45px;
   }
 
   .title-overlay h5 {
@@ -232,14 +222,9 @@
     font-size: 0.65rem;
   }
 
-  .hover-buttons {
-    padding: 4px;
-  }
-
   .hover-buttons .btn {
     font-size: 0.65rem;
     padding: 3px 5px;
-    margin: 1px 0;
   }
 
   .new-release-badge,

@@ -3,7 +3,7 @@ import "../../../css/moviecard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import useDaftarSayaStore from "../data/useDaftarSayaStore";
-import toast from "react-hot-toast"; // ✅ Tambahkan ini
+import toast from "react-hot-toast";
 
 function MovieCard({ movie, type = "portrait" }) {
   const imageSrc =
@@ -21,7 +21,7 @@ function MovieCard({ movie, type = "portrait" }) {
 
   return (
     <div
-      className={`poster-wrapper position-relative group ${
+      className={`poster-wrapper position-relative ${
         type === "landscape" ? "wrapper-landscape" : "wrapper-portrait"
       }`}
     >
@@ -30,7 +30,7 @@ function MovieCard({ movie, type = "portrait" }) {
 
       {/* Badge Rilis Terbaru */}
       {movie.isNewRelease && (
-        <div className="position-absolute text-white fw-bold px-2 py-1 rounded-pill small shadow new-release-badge fs">
+        <div className="new-release-badge">
           <small>Rilis Terbaru</small>
         </div>
       )}
@@ -39,9 +39,7 @@ function MovieCard({ movie, type = "portrait" }) {
       <img
         src={imageSrc}
         alt={movie.title}
-        className={`poster-img ${
-          type === "landscape" ? "landscape-img" : "portrait-img"
-        }`}
+        className={`poster-img ${type === "landscape" ? "landscape-img" : "portrait-img"}`}
       />
 
       {/* Overlay Judul & Rating (landscape) */}
@@ -61,7 +59,7 @@ function MovieCard({ movie, type = "portrait" }) {
 
       {/* Overlay Judul & Genre (portrait) */}
       {type === "portrait" && (
-        <div className="title-overlay position-absolute bottom-0 w-100 text-white p-2">
+        <div className="title-overlay position-absolute bottom-0 w-100 text-white">
           <h5 className="mb-0">{movie.title}</h5>
           <span className="fs">
             {Array.isArray(movie.genre)
@@ -72,7 +70,7 @@ function MovieCard({ movie, type = "portrait" }) {
       )}
 
       {/* Tombol Hover: Toggle Tambah/Hapus */}
-      <div className="hover-buttons position-absolute bottom-0 start-0 w-100 text-center">
+      <div className="hover-buttons">
         {isInDaftar ? (
           <button
             className="btn btn-danger btn-sm"
