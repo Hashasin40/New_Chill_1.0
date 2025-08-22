@@ -63,7 +63,7 @@
 }
 
 /* === [Responsive: Ultra Mobile ≤320px] ====================== */
-@media (max-width: 320px) {
+@media (max-width: 345px) {
   .wrapper-portrait {
     width: 100px;
     border-radius: 0.5rem;

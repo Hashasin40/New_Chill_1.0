@@ -19,7 +19,7 @@
 }
 
 /* === [Responsive: Ultra Mobile ≤320px] ====================== */
-@media (max-width: 320px) {
+@media (max-width: 345px) {
   .btn-left,
   .btn-right {
     padding: 0.3rem 0.5rem;
