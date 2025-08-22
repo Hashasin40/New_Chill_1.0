@@ -1,4 +1,6 @@
 import { useNavigate, Link } from 'react-router-dom';
+import IconGoogle from '../assets/icon-google.png';
+import BgSignUp from '../assets/background-signup.jpg';
 import '../css/logged.css';
 
 function SignUp() {
@@ -24,7 +26,7 @@ function SignUp() {
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100"
       style={{
-        backgroundImage: 'url(/src/assets/background-signup.jpg)',
+        backgroundImage: `url(${BgSignUp})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
@@ -90,7 +92,7 @@ function SignUp() {
 
         <button className="btn-google w-100 d-flex align-items-center justify-content-center rounded-pill">
           <img
-            src="/src/assets/icon google.png"
+            src={IconGoogle}
             alt="Google"
             style={{ width: '20px', marginRight: '10px' }}
           />
