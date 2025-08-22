@@ -3,12 +3,14 @@ import { useState } from "react";
 import GenreList from "../footer/FooterGenre";
 import BantuanList from "../footer/FooterBantuan";
 import Navbar from "../dashboard/navbar/Navbar";
+import useBreakpoint from "../hooks/useBreakpoint";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../css/dashboard.css";
 
 function DashboardLayout() {
   const [showGenre, setShowGenre] = useState(false);
   const [showBantuan, setShowBantuan] = useState(false);
+  const { isMobile } = useBreakpoint();
 
   return (
     <>
@@ -35,33 +37,35 @@ function DashboardLayout() {
             </div>
 
             {/* Versi Desktop */}
-            <div className="col-12 col-md-8 d-none d-md-flex">
-              <div className="row w-auto">
-                <GenreList />
-                <BantuanList />
+            {!isMobile && (
+              <div className="col-12 col-md-8 d-flex">
+                <div className="row w-auto">
+                  <GenreList />
+                  <BantuanList />
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Versi Mobile */}
-            <div className="col-12 d-flex d-md-none flex-column gap-2">
-              {/* Toggle Genre */}
-              <button
-                className="footer-mobile-item d-flex justify-content-between w-100 text-start"
-                onClick={() => setShowGenre(!showGenre)}
-              >
-                Genre <span>{showGenre ? "⌄" : "›"}</span>
-              </button>
-              {showGenre && <GenreList />}
+            {isMobile && (
+              <div className="col-12 d-flex flex-column gap-2">
+                <button
+                  className="footer-mobile-item d-flex justify-content-between w-100 text-start"
+                  onClick={() => setShowGenre(!showGenre)}
+                >
+                  Genre <span>{showGenre ? "⌄" : "›"}</span>
+                </button>
+                {showGenre && <GenreList />}
 
-              {/* Toggle Bantuan */}
-              <button
-                className="footer-mobile-item d-flex justify-content-between w-100 text-start"
-                onClick={() => setShowBantuan(!showBantuan)}
-              >
-                Bantuan <span>{showBantuan ? "⌄" : "›"}</span>
-              </button>
-              {showBantuan && <BantuanList />}
-            </div>
+                <button
+                  className="footer-mobile-item d-flex justify-content-between w-100 text-start"
+                  onClick={() => setShowBantuan(!showBantuan)}
+                >
+                  Bantuan <span>{showBantuan ? "⌄" : "›"}</span>
+                </button>
+                {showBantuan && <BantuanList />}
+              </div>
+            )}
           </div>
         </div>
       </footer>

@@ -96,8 +96,8 @@ footer h6 {
   }
 }
 
-/* === [Responsive: Ultra Mobile ≤320px] ====================== */
-@media (max-width: 320px) {
+/* === [Responsive: Ultra Mobile ≤345px] ====================== */
+@media (max-width: 345px) {
   .navbar-nav {
     overflow-x: auto;
     white-space: nowrap;

@@ -7,7 +7,7 @@ function Settings() {
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isSmallMobile = useMediaQuery({ maxWidth: 500 });
-  const isTinyMobile = useMediaQuery({ maxWidth: 300 });
+  const isTinyMobile = useMediaQuery({ maxWidth: 375 });
 
   const renderContent = () => {
     switch (activeSection) {
