@@ -7,3 +7,23 @@
 .btn-right:hover {
   background-color: #333;
 }
+
+/* === [Responsive: Mobile ≤576px] ============================ */
+@media (max-width: 576px) {
+  .btn-left,
+  .btn-right {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 0.4rem;
+  }
+}
+
+/* === [Responsive: Ultra Mobile ≤320px] ====================== */
+@media (max-width: 320px) {
+  .btn-left,
+  .btn-right {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.65rem;
+    border-radius: 0.3rem;
+  }
+}

@@ -47,9 +47,33 @@
   display: none;
 }
 
-/* Responsive tweak */
+/* === [Responsive: Mobile ≤576px] ============================ */
 @media (max-width: 576px) {
   .wrapper-portrait {
     width: 120px;
+  }
+
+  .title-overlay {
+    font-size: 0.75rem;
+  }
+
+  .hover-buttons {
+    font-size: 0.75rem;
+  }
+}
+
+/* === [Responsive: Ultra Mobile ≤320px] ====================== */
+@media (max-width: 320px) {
+  .wrapper-portrait {
+    width: 100px;
+    border-radius: 0.5rem;
+  }
+
+  .title-overlay {
+    font-size: 0.65rem;
+  }
+
+  .hover-buttons {
+    font-size: 0.65rem;
   }
 }

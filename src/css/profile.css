@@ -31,3 +31,19 @@
     width: 100%;
   }
 }
+
+@media (max-width: 320px) {
+  .profile-page {
+    padding: 12px;
+  }
+
+  .profile-header {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .profile-header > * {
+    width: 100%;
+  }
+}
+

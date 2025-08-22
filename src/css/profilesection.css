@@ -125,3 +125,48 @@
     height: 64px;
   }
 }
+
+@media (max-width: 320px) {
+  .form-wrapper {
+    gap: 10px;
+    padding: 0 8px;
+  }
+
+  .input-card {
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  .input-label {
+    font-size: 12px;
+  }
+
+  .input-inside {
+    font-size: 13px;
+    height: 34px;
+  }
+
+  .edit-icon {
+    right: 8px;
+    bottom: 6px;
+    font-size: 12px;
+  }
+
+  .btn-custom {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 0;
+  }
+
+  .avatar-image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .upload-note {
+    font-size: 12px;
+    margin-top: 2px;
+    margin-left: 1px;
+  }
+}

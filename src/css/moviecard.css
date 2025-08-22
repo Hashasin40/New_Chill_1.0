@@ -197,8 +197,62 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 320px) {
   .movie-grid {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+    padding: 0.4rem;
+  }
+
+  .wrapper-portrait {
+    min-height: 200px;
+    border-radius: 0.5rem;
+  }
+
+  .poster-img,
+  .portrait-img {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .landscape-img {
+    height: 80px;
+  }
+
+  .title-overlay {
+    padding: 0.4rem;
+    padding-bottom: 1rem;
+  }
+
+  .title-overlay h5 {
+    font-size: 0.75rem;
+  }
+
+  .title-overlay span {
+    font-size: 0.65rem;
+  }
+
+  .hover-buttons {
+    padding: 4px;
+  }
+
+  .hover-buttons .btn {
+    font-size: 0.65rem;
+    padding: 3px 5px;
+    margin: 1px 0;
+  }
+
+  .new-release-badge,
+  .top10-badge {
+    font-size: 0.65rem;
+    padding: 2px 5px;
+  }
+
+  .movie-title {
+    font-size: 0.75rem;
+  }
+
+  .fs {
+    font-size: 0.6rem;
   }
 }

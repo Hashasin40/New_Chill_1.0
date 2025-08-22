@@ -83,3 +83,32 @@
     padding: 0.4rem 0.8rem;
   }
 }
+
+@media (max-width: 320px) {
+  .slider-title {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .arrow {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .btn-left {
+    left: 8px;
+  }
+
+  .btn-right {
+    left: -8px;
+  }
+
+  .movie-card-wrapper {
+    transform: scale(1);
+  }
+
+  .movie-card-wrapper:hover {
+    transform: scale(1.03);
+  }
+}

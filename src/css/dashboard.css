@@ -96,6 +96,47 @@ footer h6 {
   }
 }
 
+/* === [Responsive: Ultra Mobile ≤320px] ====================== */
+@media (max-width: 320px) {
+  .navbar-nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap !important;
+  }
+
+  .navbar-nav .nav-item {
+    margin-right: 0.5rem;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 0.65rem;
+    padding: 0 0.2rem;
+  }
+
+  .navbar-brand i {
+    font-size: 18px;
+  }
+
+  .dropdown-item {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .genre-item {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .footer-link-list li {
+    font-size: 0.7rem;
+  }
+
+  .footer-mobile-item {
+    font-size: 0.75rem;
+    padding: 0.4rem 0;
+  }
+}
+
 /* === [Responsive: Tablet ≤768px] ============================ */
 @media (max-width: 768px) {
   .footer-mobile-item {
