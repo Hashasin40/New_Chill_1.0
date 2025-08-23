@@ -1,5 +1,12 @@
 .profile-page {
-  padding: 20px;
+  min-height: 100vh;
+  padding-inline: 20px;
+  padding-bottom: 20px;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-header {
@@ -34,7 +41,8 @@
 
 @media (max-width: 345px) {
   .profile-page {
-    padding: 12px;
+    padding-inline: 12px;
+    padding-bottom: 12px;
   }
 
   .profile-header {
@@ -47,3 +55,9 @@
   }
 }
 
+/* Anti-celah bawah */
+.profile-page::after {
+  content: "";
+  display: block;
+  height: 16px;
+}

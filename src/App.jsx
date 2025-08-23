@@ -1,7 +1,7 @@
-import { Routes, Route } from "react-router-dom";
 import React, { Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import RequireAuth from "./component/RequireAuth";
-import { Toaster } from "react-hot-toast"; // ✅ Tambahkan ini
 
 // Lazy load pages
 const SignIn = React.lazy(() => import("./pages/SignIn"));
@@ -16,6 +16,7 @@ const Film = React.lazy(() => import("./pages/dashboard/Film"));
 function App() {
   return (
     <>
+      {/* ✅ Toast Notification */}
       <Toaster
         position="top-right"
         reverseOrder={false}
@@ -34,7 +35,9 @@ function App() {
           },
         }}
       />
-      <Suspense>
+
+      {/* ✅ Suspense fallback */}
+      <Suspense fallback={<div className="text-center mt-5">Loading...</div>}>
         <Routes>
           <Route path="/" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />

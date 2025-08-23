@@ -1,0 +1,149 @@
+/* === Wrapper Variants ======================================= */
+.poster-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+}
+
+.poster-wrapper.default {
+  max-width: 240px;
+}
+
+.poster-wrapper.compact {
+  max-width: 150px;
+}
+
+.poster-wrapper.tiny {
+  max-width: 100px;
+}
+
+/* === Poster Layout ========================================== */
+.wrapper-portrait {
+  aspect-ratio: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: inherit;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.portrait-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
+}
+
+.wrapper-portrait:hover .portrait-img {
+  transform: scale(1.05);
+}
+
+/* === Overlay ================================================ */
+.title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  z-index: 2;
+  min-height: 60px;
+}
+
+.title-overlay h5 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.title-overlay span {
+  font-size: 0.75rem;
+  color: #adb5bd;
+}
+
+/* === Hover Buttons ========================================== */
+.hover-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  text-align: center;
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+  display: none;
+}
+
+.poster-wrapper:hover .hover-buttons {
+  display: block;
+  opacity: 1;
+}
+
+.hover-buttons .btn {
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  margin: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.hover-buttons .btn:hover {
+  transform: scale(1.05);
+}
+
+/* === Responsive ============================================= */
+@media (max-width: 576px) {
+  .poster-wrapper.default {
+    max-width: 200px;
+  }
+
+  .poster-wrapper.compact {
+    max-width: 130px;
+  }
+
+  .title-overlay h5 {
+    font-size: 0.75rem;
+  }
+
+  .title-overlay span {
+    font-size: 0.65rem;
+  }
+
+  .hover-buttons .btn {
+    font-size: 0.65rem;
+    padding: 4px 6px;
+  }
+}
+
+@media (max-width: 345px) {
+  .poster-wrapper.default {
+    max-width: 160px;
+  }
+
+  .poster-wrapper.compact {
+    max-width: 110px;
+  }
+
+  .title-overlay h5 {
+    font-size: 0.7rem;
+  }
+
+  .title-overlay span {
+    font-size: 0.6rem;
+  }
+
+  .hover-buttons .btn {
+    font-size: 0.6rem;
+    padding: 3px 5px;
+  }
+}

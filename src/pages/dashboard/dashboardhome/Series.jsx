@@ -8,7 +8,6 @@ import "../../../css/series.css";
 function Series() {
   const { addToDaftar } = useDaftarSayaStore();
 
-  // ✅ Mapping film dengan ID dan properti yang dibutuhkan MovieCard
   const mapFilm = (items, extra = () => ({})) =>
     items.map((item, index) => ({
       id: item.id,
@@ -20,7 +19,6 @@ function Series() {
       ...extra(index, item),
     }));
 
-  // 🎬 Kategori film
   const MelanjutkanTontonanFilm = posters.slice(0, 10);
   const TopRatingFilmdanSeriesHariIni = posters.slice(10, 20);
   const FilmTrending = posters.slice(0, 10);
@@ -36,6 +34,7 @@ function Series() {
           <MovieCard movie={movie} type="landscape" onAddToList={addToDaftar} />
         )}
         cardWidth={240}
+        type="landscape" // ✅ Tambah type
       />
 
       {/* Top Rating */}
@@ -46,6 +45,7 @@ function Series() {
           <MovieCard movie={movie} type="portrait" onAddToList={addToDaftar} />
         )}
         cardWidth={150}
+        type="portrait" // ✅ Tambah type
       />
 
       {/* Film Trending */}
@@ -59,6 +59,7 @@ function Series() {
           <MovieCard movie={movie} type="portrait" onAddToList={addToDaftar} />
         )}
         cardWidth={150}
+        type="portrait" // ✅ Tambah type
       />
 
       {/* Rilis Terbaru */}
@@ -71,6 +72,7 @@ function Series() {
           <MovieCard movie={movie} type="portrait" onAddToList={addToDaftar} />
         )}
         cardWidth={150}
+        type="portrait" // ✅ Tambah type
       />
     </div>
   );

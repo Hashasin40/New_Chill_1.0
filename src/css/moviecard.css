@@ -51,24 +51,24 @@
 }
 
 .title-overlay h5 {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .title-overlay span {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 /* === [Typography] =========================================== */
 .fs {
-  font-size: 0.675rem;
+  font-size: 0.65rem;
   color: #adb5bd;
 }
 
 .movie-title {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 /* === [Badges] =============================================== */
@@ -78,7 +78,7 @@
   top: 8px;
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   z-index: 3;
 }
 
@@ -116,7 +116,7 @@
 }
 
 .hover-buttons .btn {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   padding: 4px 8px;
   margin: 2px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -130,9 +130,11 @@
 /* === [Grid Layout] ========================================== */
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
-  padding: 1rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* === [Animations] =========================================== */
@@ -147,6 +149,7 @@
   }
 }
 
+
 /* === [Responsive Styles] ==================================== */
 @media (max-width: 576px) {
   .movie-grid {
@@ -156,33 +159,29 @@
   }
 
   .wrapper-portrait {
-    height: 240px;
-    aspect-ratio: auto;
+    height: 200px;
     border-radius: 0.5rem;
   }
 
   .portrait-img {
-    height: 100%;
-    object-fit: cover;
     border-radius: 0.5rem;
   }
 
   .landscape-img {
-    height: 100px;
+    height: 90px;
   }
 
   .title-overlay {
-    bottom: 48px;
-    padding: 0.5rem;
-    min-height: 50px;
+    bottom: 40px;
+    min-height: 45px;
   }
 
   .title-overlay h5 {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .title-overlay span {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .hover-buttons {
@@ -190,7 +189,7 @@
   }
 
   .hover-buttons .btn {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     padding: 4px 6px;
     width: 100%;
     margin: 2px 0;
@@ -198,39 +197,8 @@
 
   .new-release-badge,
   .top10-badge {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     padding: 3px 6px;
-  }
-}
-
-@media (max-width: 345px) {
-  .wrapper-portrait {
-    height: 220px;
-  }
-
-  .title-overlay {
-    bottom: 44px;
-    padding: 0.4rem;
-    min-height: 45px;
-  }
-
-  .title-overlay h5 {
-    font-size: 0.75rem;
-  }
-
-  .title-overlay span {
-    font-size: 0.65rem;
-  }
-
-  .hover-buttons .btn {
-    font-size: 0.65rem;
-    padding: 3px 5px;
-  }
-
-  .new-release-badge,
-  .top10-badge {
-    font-size: 0.65rem;
-    padding: 2px 5px;
   }
 
   .movie-title {
@@ -239,5 +207,48 @@
 
   .fs {
     font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 345px) {
+  .wrapper-portrait {
+    height: 180px;
+  }
+
+  .landscape-img {
+    height: 80px;
+  }
+
+  .title-overlay {
+    bottom: 36px;
+    min-height: 40px;
+    padding: 0.4rem;
+  }
+
+  .title-overlay h5 {
+    font-size: 0.7rem;
+  }
+
+  .title-overlay span {
+    font-size: 0.6rem;
+  }
+
+  .hover-buttons .btn {
+    font-size: 0.6rem;
+    padding: 3px 5px;
+  }
+
+  .new-release-badge,
+  .top10-badge {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+
+  .movie-title {
+    font-size: 0.7rem;
+  }
+
+  .fs {
+    font-size: 0.55rem;
   }
 }

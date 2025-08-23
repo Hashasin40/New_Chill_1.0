@@ -71,6 +71,14 @@
   transform: scale(1.05);
 }
 
+.scroll-container {
+  scroll-snap-type: x mandatory;
+}
+
+.scroll-container > div {
+  scroll-snap-align: start;
+}
+
 /* === [Responsive Styles] ==================================== */
 @media (max-width: 576px) {
   .slider-title {

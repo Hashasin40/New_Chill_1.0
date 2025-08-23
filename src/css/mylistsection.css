@@ -1,4 +1,4 @@
-/* Wrapper untuk poster portrait */
+/* === [Poster Wrapper] ======================================= */
 .wrapper-portrait {
   width: 150px;
   aspect-ratio: 2 / 3;
@@ -6,9 +6,10 @@
   overflow: hidden;
   flex-shrink: 0;
   border-radius: 0.75rem;
+  box-sizing: border-box;
 }
 
-/* Gambar poster */
+/* === [Poster Image] ========================================= */
 .portrait-img {
   width: 100%;
   height: 100%;
@@ -17,29 +18,47 @@
   border-radius: inherit;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
+  box-sizing: border-box;
 }
 
-/* Hover zoom */
+/* === [Hover Zoom] =========================================== */
 .wrapper-portrait:hover .portrait-img {
   transform: scale(1.05);
 }
 
-/* Overlay judul & genre */
+/* === [Title Overlay] ======================================== */
 .title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   font-size: 0.85rem;
+  z-index: 2;
+  min-height: 60px;
+  color: #fff;
 }
 
-/* Tombol hapus muncul saat hover */
+/* === [Hover Buttons] ======================================== */
 .hover-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  text-align: center;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
+
 .wrapper-portrait:hover .hover-buttons {
   opacity: 1;
 }
 
-/* Scrollbar hidden */
+/* === [Scrollbar Hidden] ===================================== */
 .scroll-bar {
   scrollbar-width: none;
 }
@@ -53,17 +72,28 @@
     width: 120px;
   }
 
+  .scroll-container {
+    gap: 8px; /* Tambahan: jarak antar poster di mobile */
+  }
+
   .title-overlay {
     font-size: 0.75rem;
+    min-height: 45px;
+    padding: 0.4rem;
   }
 
   .hover-buttons {
     font-size: 0.75rem;
+    padding: 6px;
   }
 }
 
-/* === [Responsive: Ultra Mobile ≤320px] ====================== */
+/* === [Responsive: Ultra Mobile ≤345px] ====================== */
 @media (max-width: 345px) {
+  .scroll-container {
+    gap: 4px; /* Tetap dipertahankan untuk ultra-mobile */
+  }
+
   .wrapper-portrait {
     width: 100px;
     border-radius: 0.5rem;
@@ -71,9 +101,12 @@
 
   .title-overlay {
     font-size: 0.65rem;
+    min-height: 40px;
+    padding: 0.3rem;
   }
 
   .hover-buttons {
     font-size: 0.65rem;
+    padding: 5px;
   }
 }
