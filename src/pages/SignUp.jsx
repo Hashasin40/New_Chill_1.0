@@ -2,6 +2,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axiosInstance from '../api/axiosInstance';
 import IconGoogle from '../assets/icon-google.png';
 import BgSignUp from '../assets/background-signup.jpg';
+import IconProfile from "../assets/icon profile2.png";
 import '../css/logged.css';
 
 function SignUp() {
@@ -15,6 +16,7 @@ function SignUp() {
       name: form.username.value,
       email: form.email.value,
       password: form.password.value,
+      avatar: IconProfile,
     };
 
     try {
