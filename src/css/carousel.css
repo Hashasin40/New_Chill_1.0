@@ -4,6 +4,7 @@
   height: 600px;
   background: #000;
   color: #fff;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .carousel-item video,
@@ -90,12 +91,12 @@
 
 .carousel-caption h2 {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
   margin-bottom: 0.5rem;
 }
 
 .carousel-caption p {
-  font-size: 0.95rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.95rem);
   margin-bottom: 1rem;
 }
 
@@ -188,27 +189,11 @@
     right: 5%;
     text-align: center;
   }
-
-  .carousel-caption h2 {
-    font-size: 1.4rem;
-  }
-
-  .carousel-caption p {
-    font-size: 0.85rem;
-  }
 }
 
 @media (max-width: 576px) {
   .carousel-item {
     height: 280px;
-  }
-
-  .carousel-caption h2 {
-    font-size: 1.2rem;
-  }
-
-  .carousel-caption p {
-    font-size: 0.75rem;
   }
 
   .carousel-caption .btn {
@@ -227,16 +212,6 @@
     right: 4%;
     bottom: 6%;
     text-align: center;
-  }
-
-  .carousel-caption h2 {
-    font-size: 1rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .carousel-caption p {
-    font-size: 0.7rem;
-    margin-bottom: 0.8rem;
   }
 
   .carousel-caption .btn {

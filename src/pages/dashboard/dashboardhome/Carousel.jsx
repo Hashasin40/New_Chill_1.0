@@ -120,7 +120,7 @@ function Carousel() {
                                 Mulai
                             </Link>
                             <Link href="#" className="btn btn-custom-more text-white fw-semibold rounded-pill">
-                                <i class="bi bi-info-circle"> Selengkapnya </i>
+                                <i className="bi bi-info-circle"> Selengkapnya </i>
                             </Link>
                             <span className="badge-18plus mt-3">18+</span>
                         </div>

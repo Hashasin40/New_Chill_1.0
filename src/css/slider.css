@@ -44,10 +44,7 @@
 .slider-title {
   font-size: 1.5rem;
   font-weight: 600;
-  text-align: center;
-  background-color: #f8f9fa;
-  border-radius: 1rem;
-  padding: 1rem;
+  text-align: left;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -79,11 +76,11 @@
   scroll-snap-align: start;
 }
 
+
 /* === [Responsive Styles] ==================================== */
 @media (max-width: 576px) {
   .slider-title {
     font-size: 1.2rem;
-    padding: 0.75rem;
   }
 
   .arrow {
@@ -95,8 +92,6 @@
 @media (max-width: 345px) {
   .slider-title {
     font-size: 1rem;
-    padding: 0.5rem;
-    border-radius: 0.75rem;
   }
 
   .arrow {

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import MovieSlider from "../dashboardhome/MovieSlider";
 import MovieCard from "../dashboardhome/MovieCard";
 import posters from "../data/poster";
@@ -6,7 +7,22 @@ import useDaftarSayaStore from "../data/useDaftarSayaStore";
 import "../../../css/series.css";
 
 function Series() {
-  const { addToDaftar } = useDaftarSayaStore();
+  const location = useLocation();
+  const { addToDaftar, needsRefresh, setNeedsRefresh } = useDaftarSayaStore();
+
+  // Detect navigasi balik → set flag refresh
+  useEffect(() => {
+    setNeedsRefresh(true);
+  }, [location.key]);
+
+  // Refresh data saat flag aktif
+  useEffect(() => {
+    if (needsRefresh) {
+      // Bisa tambahkan logic re-fetch di sini kalau pakai API
+      console.log("🔄 Refresh konten Series...");
+      setNeedsRefresh(false);
+    }
+  }, [needsRefresh]);
 
   const mapFilm = (items, extra = () => ({})) =>
     items.map((item, index) => ({
@@ -26,7 +42,6 @@ function Series() {
 
   return (
     <div className="bg-custom text-white">
-      {/* Melanjutkan Tontonan */}
       <MovieSlider
         title="Melanjutkan Tontonan Film"
         movies={mapFilm(MelanjutkanTontonanFilm)}
@@ -34,10 +49,9 @@ function Series() {
           <MovieCard movie={movie} type="landscape" onAddToList={addToDaftar} />
         )}
         cardWidth={240}
-        type="landscape" // ✅ Tambah type
+        type="landscape"
       />
 
-      {/* Top Rating */}
       <MovieSlider
         title="Top Rating Film dan Series Hari ini"
         movies={mapFilm(TopRatingFilmdanSeriesHariIni)}
@@ -45,10 +59,9 @@ function Series() {
           <MovieCard movie={movie} type="portrait" onAddToList={addToDaftar} />
         )}
         cardWidth={150}
-        type="portrait" // ✅ Tambah type
+        type="portrait"
       />
 
-      {/* Film Trending */}
       <MovieSlider
         title="Film Trending"
         movies={mapFilm(FilmTrending, (index) => ({
@@ -59,10 +72,9 @@ function Series() {
           <MovieCard movie={movie} type="portrait" onAddToList={addToDaftar} />
         )}
         cardWidth={150}
-        type="portrait" // ✅ Tambah type
+        type="portrait"
       />
 
-      {/* Rilis Terbaru */}
       <MovieSlider
         title="Rilis Terbaru"
         movies={mapFilm(RilisTerbaru, () => ({
@@ -72,7 +84,7 @@ function Series() {
           <MovieCard movie={movie} type="portrait" onAddToList={addToDaftar} />
         )}
         cardWidth={150}
-        type="portrait" // ✅ Tambah type
+        type="portrait"
       />
     </div>
   );

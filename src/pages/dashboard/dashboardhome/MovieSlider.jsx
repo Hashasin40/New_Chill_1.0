@@ -38,8 +38,8 @@ function MovieSlider({
   };
 
   return (
-    <div className="movie-slider container-fluid pt-5 px-3">
-      <h2 className="mb-0 p-0">{title}</h2>
+    <div className="movie-slider container-fluid pt-3 px-3">
+      <h2 className="slider-title">{title}</h2>
 
       <div className="d-flex justify-content-between align-items-center">
         {!isMobile && <ScrollButton direction="left" onClick={scrollLeft} />}

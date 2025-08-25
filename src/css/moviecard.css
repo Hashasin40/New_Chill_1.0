@@ -211,6 +211,11 @@
 }
 
 @media (max-width: 345px) {
+    .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
   .wrapper-portrait {
     height: 180px;
   }

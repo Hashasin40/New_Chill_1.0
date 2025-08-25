@@ -1,4 +1,5 @@
 import { useNavigate, Link } from 'react-router-dom';
+import axiosInstance from '../api/axiosInstance';
 import IconGoogle from '../assets/icon-google.png';
 import BgSignUp from '../assets/background-signup.jpg';
 import '../css/logged.css';
@@ -6,21 +7,27 @@ import '../css/logged.css';
 function SignUp() {
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-
     const form = e.target;
+
     const newUser = {
-      name: form.username.value, // ✅ ganti dari 'username' ke 'name'
+      name: form.username.value,
       email: form.email.value,
       password: form.password.value,
     };
 
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
+    try {
+      const res = await axiosInstance.get('/users');
+      const existing = res.data.find(u => u.email === newUser.email);
+      if (existing) return alert('Email sudah terdaftar.');
 
-    navigate('/signin');
+      await axiosInstance.post('/users', newUser);
+      navigate('/signin');
+    } catch (err) {
+      console.error('Signup error:', err);
+      alert('Gagal daftar. Coba lagi nanti.');
+    }
   };
 
   return (
@@ -31,9 +38,7 @@ function SignUp() {
         backgroundPosition: 'center',
       }}
     >
-      <form
-        onSubmit={handleSignup}
-        className="shadow p-4 rounded form"
+      <form onSubmit={handleSignup} className="shadow p-4 rounded form"
         style={{
           width: '100%',
           maxWidth: '400px',
@@ -47,55 +52,28 @@ function SignUp() {
         </div>
 
         <div className="form-group mb-3">
-          <label htmlFor="username" className="form-label">Username</label>
-          <input
-            name="username"
-            placeholder="Username"
-            className="form-control rounded-pill custom-input"
-            required
-          />
+          <label htmlFor="username">Username</label>
+          <input name="username" className="form-control rounded-pill custom-input" required />
         </div>
 
         <div className="form-group mb-3">
           <label htmlFor="email">Email</label>
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            className="form-control rounded-pill custom-input"
-            required
-          />
+          <input name="email" type="email" className="form-control rounded-pill custom-input" required />
         </div>
 
         <div className="form-group mb-3">
           <label htmlFor="password">Password</label>
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            className="form-control rounded-pill custom-input"
-            required
-          />
+          <input name="password" type="password" className="form-control rounded-pill custom-input" required />
         </div>
 
-        <small>
-          Sudah punya akun? <Link to="/signin" className="link-no-underline">Masuk</Link>
-        </small>
+        <small>Sudah punya akun? <Link to="/signin" className="link-no-underline">Masuk</Link></small>
 
-        <button type="submit" className="btn btn-login mt-3 w-100 rounded-pill">
-          Daftar
-        </button>
+        <button type="submit" className="btn btn-login mt-3 w-100 rounded-pill">Daftar</button>
 
-        <div className="text-center mt-2">
-          <small>Atau</small>
-        </div>
+        <div className="text-center mt-2"><small>Atau</small></div>
 
         <button className="btn-google w-100 d-flex align-items-center justify-content-center rounded-pill">
-          <img
-            src={IconGoogle}
-            alt="Google"
-            style={{ width: '20px', marginRight: '10px' }}
-          />
+          <img src={IconGoogle} alt="Google" style={{ width: '20px', marginRight: '10px' }} />
           Daftar dengan Google
         </button>
       </form>
