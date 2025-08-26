@@ -97,7 +97,7 @@ function Carousel() {
                     <video
                         className="d-block w-100"
                         src="/videos/yowes-ben-finale.mp4"
-                        poster="/poster/duty-after-school.png"
+                        poster="/poster/OIP (3).jpeg"
                         muted
                         playsInline
                         preload="none"
