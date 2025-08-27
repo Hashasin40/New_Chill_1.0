@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../../../api/axiosInstance";
+import "../../../css/navbarsearch.css";
 
-// Custom debounce hook
 const useDebounce = (value, delay = 300) => {
   const [debounced, setDebounced] = useState(value);
   useEffect(() => {
@@ -18,7 +18,6 @@ const NavbarSearch = () => {
   const [loading, setLoading] = useState(false);
   const debouncedQuery = useDebounce(query);
 
-  // Fetch and filter search results
   useEffect(() => {
     if (!debouncedQuery.trim()) {
       setResults([]);
@@ -42,7 +41,6 @@ const NavbarSearch = () => {
       .finally(() => setLoading(false));
   }, [debouncedQuery]);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (!e.target.closest(".search-wrapper")) {
@@ -53,12 +51,23 @@ const NavbarSearch = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Auto-focus mobile input
   useEffect(() => {
     if (showInput) {
       document.querySelector("#mobile-search-input")?.focus();
     }
   }, [showInput]);
+
+  useEffect(() => {
+    const input = document.querySelector("#mobile-search-input");
+    const dropdownMenu = document.querySelector(".navbar-profile-dropdown .dropdown-menu");
+
+    const closeDropdown = () => {
+      dropdownMenu?.classList.remove("show");
+    };
+
+    input?.addEventListener("focus", closeDropdown);
+    return () => input?.removeEventListener("focus", closeDropdown);
+  }, []);
 
   const renderResults = () => {
     if (!query.trim()) return null;
@@ -69,7 +78,7 @@ const NavbarSearch = () => {
           <li className="list-group-item bg-dark text-white">Loading...</li>
         ) : results.length > 0 ? (
           results.map((item) => (
-            <li key={item.id} className="list-group-item bg-dark text-white d-flex align-items-center">
+            <li key={item.id} className="list-group-item custom-bg-results text-white d-flex align-items-center border-secondary">
               <img src={item.poster} alt={item.title} width={30} className="me-2 rounded" />
               {item.title}
             </li>
@@ -86,7 +95,7 @@ const NavbarSearch = () => {
       {/* Desktop Search */}
       <div className="search-wrapper position-relative d-none d-md-flex me-3">
         <input
-          className="form-control form-control-sm me-2 bg-dark text-white border-secondary rounded-pill"
+          className="form-control form-control-sm navbar-search-input bg-dark text-white border-secondary rounded-pill"
           type="search"
           placeholder="Search poster..."
           value={query}
@@ -102,27 +111,32 @@ const NavbarSearch = () => {
       <div className="d-flex d-md-none m-0">
         <button
           className="btn btn-dark m-0 p-0"
-          onClick={() => setShowInput(!showInput)}
+          onClick={() => setShowInput(true)}
         >
           <i className="fas fa-search"></i>
         </button>
       </div>
 
-      {/* Mobile Search Input */}
+      {/* Mobile Search Overlay */}
       {showInput && (
-        <div className="search-wrapper position-relative d-flex d-md-none w-100 mt-2">
-          <input
-            id="mobile-search-input"
-            className="form-control form-control-sm me-2 bg-dark text-white border-secondary rounded-pill"
-            type="search"
-            placeholder="Search poster..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button className="btn btn-outline-light btn-sm rounded-pill" type="submit">
-            Go
-          </button>
-          {renderResults()}
+        <div className="mobile-search-overlay position-fixed top-0 start-0 w-100 h-100 p-3">
+          <div className="d-flex align-items-center mb-3">
+            <button className="btn btn-sm btn-outline-light me-2 rounded-circle" onClick={() => setShowInput(false)}>
+              <i className="bi bi-chevron-left"></i>
+            </button>
+            <h5 className="text-white m-0">Search Posters</h5>
+          </div>
+          <div className="search-wrapper position-relative">
+            <input
+              id="mobile-search-input"
+              className="form-control form-control-sm navbar-search-input bg-dark text-white border-secondary rounded-pill mb-2"
+              type="search"
+              placeholder="Search poster..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            {renderResults()}
+          </div>
         </div>
       )}
     </>

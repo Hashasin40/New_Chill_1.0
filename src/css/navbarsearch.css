@@ -1,0 +1,28 @@
+.custom-bg-results {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mobile-search-overlay {
+  z-index: 1055;
+  overflow-y: auto;
+}
+
+.mobile-search-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1055;
+  overflow-y: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .navbar-profile-dropdown {
+    position: relative;
+    z-index: 1050;
+  }
+
+  .search-wrapper .list-group {
+    z-index: 1060;
+  }
+}
