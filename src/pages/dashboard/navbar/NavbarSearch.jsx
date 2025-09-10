@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import axiosInstance from "../../../api/axiosInstance";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setQuery, fetchSearchResults } from "../../../store/redux/searchSlice";
 import "../../../css/navbarsearch.css";
 
 const useDebounce = (value, delay = 300) => {
@@ -12,39 +13,23 @@ const useDebounce = (value, delay = 300) => {
 };
 
 const NavbarSearch = () => {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const dispatch = useDispatch();
+  const query = useSelector((state) => state.search.query);
+  const results = useSelector((state) => state.search.results);
+  const loading = useSelector((state) => state.search.loading);
   const [showInput, setShowInput] = useState(false);
-  const [loading, setLoading] = useState(false);
   const debouncedQuery = useDebounce(query);
 
   useEffect(() => {
-    if (!debouncedQuery.trim()) {
-      setResults([]);
-      setLoading(false);
-      return;
+    if (debouncedQuery.trim()) {
+      dispatch(fetchSearchResults(debouncedQuery));
     }
-
-    setLoading(true);
-    axiosInstance
-      .get("/posters")
-      .then((res) => {
-        const filtered = res.data
-          .filter((item) => {
-            const text = item.searchText?.toLowerCase() || "";
-            return text.includes(debouncedQuery.toLowerCase());
-          })
-          .sort((a, b) => b.searchBoost - a.searchBoost);
-        setResults(filtered);
-      })
-      .catch(() => setResults([]))
-      .finally(() => setLoading(false));
   }, [debouncedQuery]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (!e.target.closest(".search-wrapper")) {
-        setResults([]);
+        dispatch(setQuery(""));
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -99,7 +84,7 @@ const NavbarSearch = () => {
           type="search"
           placeholder="Search poster..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => dispatch(setQuery(e.target.value))}
         />
         <button className="btn btn-outline-light btn-sm rounded-pill" type="submit">
           Search
@@ -109,10 +94,7 @@ const NavbarSearch = () => {
 
       {/* Mobile Search Toggle */}
       <div className="d-flex d-md-none m-0">
-        <button
-          className="btn btn-dark m-0 p-0"
-          onClick={() => setShowInput(true)}
-        >
+        <button className="btn btn-dark m-0 p-0" onClick={() => setShowInput(true)}>
           <i className="fas fa-search"></i>
         </button>
       </div>
@@ -133,7 +115,7 @@ const NavbarSearch = () => {
               type="search"
               placeholder="Search poster..."
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => dispatch(setQuery(e.target.value))}
             />
             {renderResults()}
           </div>

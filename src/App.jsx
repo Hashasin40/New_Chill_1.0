@@ -18,7 +18,7 @@ function App() {
     <>
       {/* ✅ Toast Notification */}
       <Toaster
-        position="top-right"
+        position="top-center"
         reverseOrder={false}
         toastOptions={{
           success: {

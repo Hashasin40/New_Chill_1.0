@@ -1,34 +1,29 @@
 import { useNavigate, Link } from 'react-router-dom';
-import axiosInstance from '../api/axiosInstance';
+import { useDispatch, useSelector } from 'react-redux';
+import { signupUser } from '../store/redux/userSlice';
 import IconGoogle from '../assets/icon-google.png';
 import BgSignUp from '../assets/background-signup.jpg';
-import IconProfile from "../assets/icon profile2.png";
 import '../css/logged.css';
 
 function SignUp() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.user);
 
   const handleSignup = async (e) => {
     e.preventDefault();
     const form = e.target;
 
-    const newUser = {
-      name: form.username.value,
-      email: form.email.value,
-      password: form.password.value,
-      avatar: IconProfile,
-    };
+    const name = form.username.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
-    try {
-      const res = await axiosInstance.get('/users');
-      const existing = res.data.find(u => u.email === newUser.email);
-      if (existing) return alert('Email sudah terdaftar.');
+    const result = await dispatch(signupUser({ name, email, password }));
 
-      await axiosInstance.post('/users', newUser);
+    if (!result.error) {
       navigate('/signin');
-    } catch (err) {
-      console.error('Signup error:', err);
-      alert('Gagal daftar. Coba lagi nanti.');
+    } else {
+      alert(result.payload); // "Email sudah terdaftar." atau "Gagal daftar. Coba lagi nanti."
     }
   };
 
@@ -70,11 +65,13 @@ function SignUp() {
 
         <small>Sudah punya akun? <Link to="/signin" className="link-no-underline">Masuk</Link></small>
 
-        <button type="submit" className="btn btn-login mt-3 w-100 rounded-pill">Daftar</button>
+        <button type="submit" className="btn btn-login mt-3 w-100 rounded-pill" disabled={loading}>
+          {loading ? 'Memproses...' : 'Daftar'}
+        </button>
 
         <div className="text-center mt-2"><small>Atau</small></div>
 
-        <button className="btn-google w-100 d-flex align-items-center justify-content-center rounded-pill">
+        <button type="button" className="btn-google w-100 d-flex align-items-center justify-content-center rounded-pill">
           <img src={IconGoogle} alt="Google" style={{ width: '20px', marginRight: '10px' }} />
           Daftar dengan Google
         </button>

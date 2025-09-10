@@ -1,13 +1,14 @@
 import { useNavigate, Link } from 'react-router-dom';
-import useAuth from '../store/auth';
-import axiosInstance from '../api/axiosInstance';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../store/redux/userSlice';
 import IconGoogle from '../assets/icon-google.png';
 import BgSignIn from '../assets/background-login.jpg';
 import '../css/logged.css';
 
 function SignIn() {
   const navigate = useNavigate();
-  const setUser = useAuth((state) => state.setUser);
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.user);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,28 +16,12 @@ function SignIn() {
     const email = form.email.value;
     const password = form.password.value;
 
-    try {
-      const res = await axiosInstance.get('/users');
-      const users = res.data;
+    const result = await dispatch(loginUser({ email, password }));
 
-      const foundUser = users.find(
-        (u) => u.email === email && u.password === password
-      );
-
-      if (foundUser) {
-        setUser({
-          name: foundUser.name,
-          email: foundUser.email,
-          avatar: foundUser.avatar || null,
-        });
-        localStorage.setItem('user', JSON.stringify(foundUser));
-        navigate('/dashboard');
-      } else {
-        alert('Email atau password salah!');
-      }
-    } catch (err) {
-      console.error('Login error:', err);
-      alert('Gagal login. Coba lagi nanti.');
+    if (!result.error) {
+      navigate('/dashboard');
+    } else {
+      alert(result.payload); // "Email atau password salah!" atau "Gagal login. Coba lagi nanti."
     }
   };
 
@@ -80,7 +65,9 @@ function SignIn() {
           <small><Link to="#" className="link-no-underline">Lupa kata sandi?</Link></small>
         </div>
 
-        <button type="submit" className="btn btn-login mt-3 w-100 rounded-pill">Masuk</button>
+        <button type="submit" className="btn btn-login mt-3 w-100 rounded-pill" disabled={loading}>
+          {loading ? 'Memproses...' : 'Masuk'}
+        </button>
 
         <div className="text-center mt-2"><small>Atau</small></div>
 

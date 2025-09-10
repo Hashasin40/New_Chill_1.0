@@ -9,7 +9,7 @@ function MovieSlider({
   renderItem,
   cardWidth = 150,
   spaceBetween = 12,
-  type = "portrait", // ⬅️ Tambahkan ini
+  type = "portrait",
 }) {
   const scrollRef = React.useRef();
   const { isMobile, isSmallMobile, isTinyMobile } = useBreakpoint();

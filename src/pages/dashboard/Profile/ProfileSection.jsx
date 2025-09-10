@@ -1,23 +1,21 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import toast from "react-hot-toast";
 
 import IconProfile from "../../../assets/icon profile2.png";
-import { useUserProfile } from "../data/useUserProfile";
+import {
+  setUsername,
+  setPassword,
+  setAvatarLocal,
+  updateUserProfile
+} from "../../../store/redux/userSlice";
 
 import "../../../css/profilesection.css";
 
 const ProfileSection = () => {
-  const {
-    username,
-    setUsername,
-    email,
-    password,
-    setPassword,
-    avatarLocal,
-    setAvatarLocal,
-    updateUser,
-  } = useUserProfile();
+  const dispatch = useDispatch();
+  const { data: user, username, password, avatarLocal, loading } = useSelector((state) => state.user);
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
@@ -29,17 +27,30 @@ const ProfileSection = () => {
     }
 
     const reader = new FileReader();
-    reader.onloadend = () => setAvatarLocal(reader.result);
+    reader.onloadend = () => dispatch(setAvatarLocal(reader.result));
     reader.readAsDataURL(file);
   };
 
-  const handleSave = () => {
-    if (!username || !email) {
+  const handleSave = async () => {
+    if (!username || !user?.email) {
       toast.error("Username dan email wajib diisi");
       return;
     }
 
-    updateUser();
+    const updated = {
+      ...user,
+      name: username,
+      password: password || user.password,
+      avatar: avatarLocal || user.avatar
+    };
+
+  const result = await dispatch(updateUserProfile(updated));
+
+  if (updateUserProfile.fulfilled.match(result)) {
+    toast.success("Profil berhasil disimpan ke server");
+  } else {
+    toast.error(result.payload || "Gagal update profil");
+  }
   };
 
   return (
@@ -76,7 +87,7 @@ const ProfileSection = () => {
           <input
             type="text"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => dispatch(setUsername(e.target.value))}
             className="input-inside"
             placeholder="Nama pengguna"
           />
@@ -87,7 +98,7 @@ const ProfileSection = () => {
           <label className="input-label">Email</label>
           <input
             type="email"
-            value={email}
+            value={user?.email || ""}
             readOnly
             className="input-inside input-disabled"
           />
@@ -98,7 +109,7 @@ const ProfileSection = () => {
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => dispatch(setPassword(e.target.value))}
             className="input-inside"
             placeholder="Kosongkan jika tidak ingin mengubah"
           />
@@ -106,8 +117,12 @@ const ProfileSection = () => {
         </div>
       </Form>
 
-      <Button className="btn button-custom mt-3 rounded-pill" onClick={handleSave}>
-        Simpan
+      <Button
+        className="btn button-custom mt-3 rounded-pill"
+        onClick={handleSave}
+        disabled={loading}
+      >
+        {loading ? "Menyimpan..." : "Simpan"}
       </Button>
     </div>
   );

@@ -1,43 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { fetchPosters } from "../../../store/redux/filmSlice";
 import MovieSlider from "../dashboardhome/MovieSlider";
 import MovieCard from "../dashboardhome/MovieCard";
 import useDaftarSayaStore from "../data/useDaftarSayaStore";
-import axiosInstance from "../../../api/axiosInstance";
 import "../../../css/series.css";
 
 function Series() {
   const location = useLocation();
+  const dispatch = useDispatch();
   const { addToDaftar, needsRefresh, setNeedsRefresh } = useDaftarSayaStore();
 
-  const [posters, setPosters] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const posters = useSelector((state) => state.film.data);
+  const isLoading = useSelector((state) => state.film.loading);
 
-  // Navigasi balik → refresh konten
   useEffect(() => {
     setNeedsRefresh(true);
   }, [location.key]);
 
   useEffect(() => {
     if (needsRefresh) {
-      fetchPosters();
+      dispatch(fetchPosters());
       setNeedsRefresh(false);
     }
   }, [needsRefresh]);
-
-  const fetchPosters = async () => {
-    try {
-      const res = await axiosInstance.get("/posters");
-      const cleanData = res.data.filter(
-        (item) => item.id && item.title && item.poster && item.landscape
-      );
-      setPosters(cleanData);
-    } catch (err) {
-      console.error("❌ Gagal fetch posters:", err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const mapFilm = (items, extra = () => ({})) =>
     items.map((item, index) => ({
